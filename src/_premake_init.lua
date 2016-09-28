@@ -177,6 +177,12 @@
 	}
 
 	api.register {
+		name = "compilebuildoutputs",
+		scope = "config",
+		kind = "boolean"
+	}
+
+	api.register {
 		name = "configmap",
 		scope = "project",
 		kind = "list:keyed:array:string",
@@ -787,6 +793,13 @@
 	}
 
 	api.register {
+		name = "runpathdirs",
+		scope = "config",
+		kind = "list:path",
+		tokens = true,
+	}
+
+	api.register {
 		name = "runtime",
 		scope = "config",
 		kind = "string",
@@ -953,6 +966,7 @@
 			"Default",
 			"On",
 			"Off",
+			"FastLink",    -- Visual Studio 2015+ only, considered 'On' for all other cases.
 		},
 	}
 
@@ -1098,6 +1112,7 @@
 			"Default",
 			"AVX",
 			"AVX2",
+			"IA32",
 			"SSE",
 			"SSE2",
 			"SSE3",
@@ -1189,7 +1204,7 @@
 		vectorextensions(value:sub(7))
 	end,
 	function(value)
-		vectorextension "Default"
+		vectorextensions "Default"
 	end)
 
 
